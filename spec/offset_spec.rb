@@ -23,7 +23,7 @@ RSpec.describe Offset do
 	end
 
 	it 'can create new offsets from the date' do
-		expect(set.date_check).to be_a(Integer)
+		expect(set.date_check).to be_a(String)
 		expect(set.date_check.size).to eq(8)
 	end
 

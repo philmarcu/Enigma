@@ -17,15 +17,15 @@ class Offset
 	
 	def date_check
 		if @date.class == Date
-			@date.strftime("%d%m%Y").to_i
+			@date.strftime("%d%m%Y")
 		elsif
 			@date.class == String
-			@date.to_i
+			@date
 		end
 	end
 
 	def date_format
-		squared = date_check ** 2
+		squared = date_check.to_i ** 2
 		digits = squared.to_s[-4..-1]
 		digits.split("").map {|num| num.to_i}
 	end
@@ -35,7 +35,7 @@ class Offset
 		key_format.each_with_index do |key, k_idx|
 			date_format.each_with_index do |date, d_idx|
 				if k_idx == d_idx
-				   final_shifts << key + date
+				  final_shifts << key + date
 					break if final_shifts.size == 4
 				end
 			end
