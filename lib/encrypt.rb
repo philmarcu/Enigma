@@ -14,4 +14,4 @@ encrypter.write(crypt[:encryption])
 
 p "Created '#{crypt_file}' with the key #{crypt[:key]} date #{crypt[:date]}"
 
-# 86304
+#
