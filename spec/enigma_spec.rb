@@ -16,11 +16,24 @@ RSpec.describe Enigma do
     date = "040895"
     
     expected = {
-      encryption: [3, 27, 73, 20],
       message: "keder ohulw!",
       key: "02715",
       date: "040895"
     }
     expect(enigma.encrypt(message, key, date)).to eq(expected)
+  end
+
+  it 'can encrypt a message w/o a given date' do
+    message = "Hello World!"
+    key = "02715"
+    date = Date.today.strftime("%d%m%Y")
+
+    expected = {
+      message: "rijdydugapb!",
+      key: "02715",
+      date: date
+    }
+
+    expect(enigma.encrypt(message, key)).to eq(expected)
   end
 end

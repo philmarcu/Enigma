@@ -13,13 +13,13 @@ class Enigma
   end
 
   def encrypt(message, key = new_key, date = Date.today )
-    shifts = Offset.new(key, date).shift_format
     hash = {}
-    date = Offset.new(key, date).date_check
+    shifts = Offset.new(key, date).shift_format
+    date = (Offset.new(key, date).date_check).to_s
 
-    hash[:encryption] = Shift.new.forward(message, shifts)
+    hash[:message] = Shift.new.forward(message, shifts)
     hash[:key] = key
     hash[:date] = date
-    require 'pry'; binding.pry
+    hash
   end
 end
