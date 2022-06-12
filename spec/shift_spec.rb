@@ -1,4 +1,3 @@
-require './lib/generator.rb'
 require './lib/shift.rb'
 
 RSpec.describe Shift do
@@ -35,8 +34,9 @@ RSpec.describe Shift do
   it 'can shift words forwards or backwards' do
     shifts = [3, 27, 73, 20]
     message = "Hello World!"
+    encrypted = "keder ohulw!"
 
     expect(shift.forward(message, shifts)).to eq("keder ohulw!")
-    expect(shift.backward(message, shifts)).to eq("eetsl dvoll!")
+    expect(shift.backward(encrypted, shifts)).to eq("hello world!")
   end
 end

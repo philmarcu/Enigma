@@ -35,7 +35,7 @@ class Offset
 		key_format.each_with_index do |key, k_idx|
 			date_format.each_with_index do |date, d_idx|
 				if k_idx == d_idx
-				   final_shifts << key + date
+				  final_shifts << key + date
 					break if final_shifts.size == 4
 				end
 			end
