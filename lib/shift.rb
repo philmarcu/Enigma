@@ -14,4 +14,20 @@ class Shift
       char
     end
   end
+
+  def forward(message, shifts)
+    split_msg = message.downcase.split("")
+    forward_msg = split_msg.map.with_index do |char, index|
+      convert_letters(char, index, shifts, 1)
+    end
+    forward_msg.join  
+  end
+
+  def backward(message, shifts)
+    split_msg = message.downcase.split("")
+    backward_msg = split_msg.map.with_index do |char, index|
+      convert_letters(char, index, shifts, -1)
+    end
+    backward_msg.join
+  end
 end
