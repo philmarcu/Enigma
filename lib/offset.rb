@@ -2,7 +2,7 @@ require 'Date'
 
 class Offset
 
-	attr_reader :key, :date,  :letters
+	attr_reader :key, :date, :letters
 	def initialize(key, date = Date.today)
 		@key = key
 		@date = date
