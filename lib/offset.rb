@@ -17,15 +17,15 @@ class Offset
 	
 	def date_check
 		if @date.class == Date
-			@date.strftime("%d%m%Y").to_i
+			@date.strftime("%d%m%Y")
 		elsif
 			@date.class == String
-			@date.to_i
+			@date
 		end
 	end
 
 	def date_format
-		squared = date_check ** 2
+		squared = date_check.to_i ** 2
 		digits = squared.to_s[-4..-1]
 		digits.split("").map {|num| num.to_i}
 	end
