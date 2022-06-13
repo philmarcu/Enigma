@@ -24,11 +24,11 @@ RSpec.describe Offset do
 
 	it 'can create new offsets from the date' do
 		expect(set.date_check).to be_a(String)
-		expect(set.date_check.size).to eq(8)
+		expect(set.date_check.size).to eq(6)
 	end
 
 	it 'can format the date with a date object' do
-		expect(set.date_format).to eq([8, 4, 8, 4])
+		expect(set.date_format).to eq([6, 8, 8, 4])
 	end
 
 	it 'can format the date with a string object' do
@@ -38,19 +38,6 @@ RSpec.describe Offset do
 
 	it 'can format a string key' do
 		expect(set.shift_format.size).to eq(4)
-		expect(set.shift_format).to eq([10, 31, 79, 19])
-	end
-
-	it 'has a shift hash of final offsets' do
-		expected = {
-							A: 10,
-							B: 31,
-							C: 79,
-							D: 19
-					}
-
-		expect(set.shift_hash).to be_a(Hash)
-		expect(set.shift_hash.size).to eq(4)
-		expect(set.shift_hash).to eq(expected)
+		expect(set.shift_format).to eq([8, 35, 79, 19])
 	end
 end
