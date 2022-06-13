@@ -17,7 +17,9 @@ class Offset
 	
 	def date_check
 		if @date.class == Date
-			@date.strftime("%d%m%Y")
+			date = @date.strftime("%d%m%Y")
+      date.slice!(4..5)
+      date
 		elsif
 			@date.class == String
 			@date
@@ -41,11 +43,6 @@ class Offset
 			end
 		end
 		final_shifts
-	end
-
-	def shift_hash
-		hash = Hash[@letters.zip(shift_format)]
-		hash.transform_keys(&:to_sym)
 	end
 end
 
