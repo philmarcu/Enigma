@@ -5,7 +5,6 @@ RSpec.describe Offset do
 
 	it 'exists & has attributes' do
 		expect(set).to be_a(Offset) 
-		expect(set.letters).to be_a(Array)
 		expect(set.key).to eq("02715")
 		expect(set.date).to be_a(Date)
 	end
@@ -24,11 +23,11 @@ RSpec.describe Offset do
 
 	it 'can create new offsets from the date' do
 		expect(set.date_check).to be_a(String)
-		expect(set.date_check.size).to eq(8)
+		expect(set.date_check.size).to eq(6)
 	end
 
 	it 'can format the date with a date object' do
-		expect(set.date_format).to eq([8, 4, 8, 4])
+		expect(set.date_format).to eq([6, 8, 8, 4])
 	end
 
 	it 'can format the date with a string object' do
@@ -36,21 +35,17 @@ RSpec.describe Offset do
 		expect(set.date_format).to eq([1, 0, 2, 5])
 	end
 
-	it 'can format a string key' do
+	it 'can format a string date / key' do
 		expect(set.shift_format.size).to eq(4)
-		expect(set.shift_format).to eq([10, 31, 79, 19])
+		expect(set.shift_format).to eq([8, 35, 79, 19])
 	end
 
-	it 'has a shift hash of final offsets' do
-		expected = {
-							A: 10,
-							B: 31,
-							C: 79,
-							D: 19
-					}
+  it 'can shift format with a date object' do
+    date = Date.today
+    obj_set = Offset.new("80204", date)
+    date_str = set.date_check
+    set = Offset.new("80204", date_str)
 
-		expect(set.shift_hash).to be_a(Hash)
-		expect(set.shift_hash.size).to eq(4)
-		expect(set.shift_hash).to eq(expected)
-	end
+    expect(set.shift_format).to eq([86, 10, 28, 8])
+  end
 end
