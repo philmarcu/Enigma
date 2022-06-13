@@ -5,7 +5,6 @@ RSpec.describe Offset do
 
 	it 'exists & has attributes' do
 		expect(set).to be_a(Offset) 
-		expect(set.letters).to be_a(Array)
 		expect(set.key).to eq("02715")
 		expect(set.date).to be_a(Date)
 	end
@@ -36,8 +35,17 @@ RSpec.describe Offset do
 		expect(set.date_format).to eq([1, 0, 2, 5])
 	end
 
-	it 'can format a string key' do
+	it 'can format a string date / key' do
 		expect(set.shift_format.size).to eq(4)
 		expect(set.shift_format).to eq([8, 35, 79, 19])
 	end
+
+  it 'can shift format with a date object' do
+    date = Date.today
+    obj_set = Offset.new("80204", date)
+    date_str = set.date_check
+    set = Offset.new("80204", date_str)
+
+    expect(set.shift_format).to eq([86, 10, 28, 8])
+  end
 end
