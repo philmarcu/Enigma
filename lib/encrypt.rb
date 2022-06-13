@@ -1,17 +1,14 @@
 require './lib/enigma'
 
+msg_txt = File.read(ARGV[0])
+
 enigma = Enigma.new
 
-message, crypt_file = ARGV
+ciphertxt = enigma.encrypt(msg_txt)
 
-msg_txt = File.open(message, 'r') {|file| file.read}
+encrypter = File.open(ARGV[1], 'w')
 
-crypt = enigma.encrypt(msg_txt)
+encrypter.write(ciphertxt[:encryption])
 
-encrypter = File.open(crypt_file, 'w')
+puts "Created '#{ARGV[1]} with the key #{ciphertxt[:key]} date #{ciphertxt[:date]}"
 
-encrypter.write(crypt[:encryption])
-
-p "Created '#{crypt_file}' with the key #{crypt[:key]} date #{crypt[:date]}"
-
-#
