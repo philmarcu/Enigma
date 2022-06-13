@@ -31,9 +31,10 @@ RSpec.describe Enigma do
     message = "Hello World!"
     key = "02715"
     date = Date.today.strftime("%d%m%Y")
-
+    date.slice!(4..5); date
+        
     expected = {
-      encryption: "rijdydugapb!",
+      encryption: "pmjdwhugztb!",
       key: "02715",
       date: date
     }
@@ -42,6 +43,7 @@ RSpec.describe Enigma do
   end
 
   it 'can encrypt a message w/o a given key or date' do
+    
     message = "Hello World!"
 
     expect(enigma.encrypt(message).size).to eq(3)
@@ -62,9 +64,10 @@ RSpec.describe Enigma do
   end
 
   it 'can decrypt a message without a date' do
-    ciphertext = "rijdydugapb!"
+    ciphertext = "pmjdwhugztb!"
     key = "02715"
     date = Date.today.strftime("%d%m%Y")
+    date.slice!(4..5); date
 
     expected = {
       decryption: "hello world!",
@@ -72,6 +75,6 @@ RSpec.describe Enigma do
       date: date
     }
     
-    expect(enigma.decrypt(ciphertext, key, date)).to eq(expected)
+    expect(enigma.decrypt(ciphertext, key)).to eq(expected)
   end
 end
